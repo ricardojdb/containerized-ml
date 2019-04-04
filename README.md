@@ -26,9 +26,13 @@ In order to build your Docker API, you must make a few changes in the following 
   3. `preprocess` Prerocess the data into the right format to be feed in to the given model.
   4. `model_predict` Decodes and preprocess the data, uses the pretrained model to make predictions and returns a well formatted json output.
   ```
+  # Decode data
   data = self.decode_data(data)
+  # Preprocess into the right format
   inputs = self.preprocess(data)
+  # Compute predictions
   preds = self.model.predict(inputs)
+  # Create json response
   output = json.dump({"outputs":preds})
   ```
 
