@@ -10,7 +10,7 @@ In order to build your Docker API, you must make a few changes in the following 
   ``` 
   FROM pytorch/pytorch 
   ```
-  2. Is always good practice to add a label with instructions on how to run your docker container, so I'd recommend you do add a label like the following:
+  2. Is always good practice to add a label with instructions on how to run your docker container, so I'd recommend you to add a label like the following:
   ``` 
   LABEL run="docker run --name=model-service --rm -dit -v <PATH>:/app -p 7001:7000 modelimage"
   ```
