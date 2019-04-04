@@ -14,7 +14,7 @@ In order to build your Docker API, you must make a few changes in the following 
   LABEL run="docker run --name=model-service --rm -dit -v <PATH>:/app -p 7001:7000 modelimage"
   ```
 
-* `utils.py` this file contains the template for `Model` class that you'd use to manage requests, data preprocessing, model predictions, and responses, inside this class you'd have implement the following methods:
+* `utils.py` this file contains a template of the `Model` class that you'll use to manage requests, data preprocessing, model predictions, and responses, inside this class you'd have to implement the following methods:
   1. `init_model` Initializes the machine learning model.
   2. `decode_data` Decodes the encoded data comming from a request.
   3. `preprocess` Prerocess the data into the right format to be feed in to the given model.
