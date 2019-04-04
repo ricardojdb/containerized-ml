@@ -15,10 +15,22 @@ In order to build your Docker API, you must make a few changes in the following 
   ```
 
 * `utils.py` this file contains a template of the `Model` class that you'll use to manage requests, data preprocessing, model predictions, and responses, inside this class you'd have to implement the following methods:
-  1. `init_model` Initializes the machine learning model.
-  2. `decode_data` Decodes the encoded data comming from a request.
+  1. `init_model` Initializes the machine learning model. Here is an example using Keras:
+  ```
+  model = load_model("model/path/model.h5")
+  ```
+  2. `decode_data` Decodes the encoded data comming from a request. e.g.
+  ```
+  decoded_data = Image.open(BytesIO(base64.b64decode(data)))
+  ```
   3. `preprocess` Prerocess the data into the right format to be feed in to the given model.
   4. `model_predict` Decodes and preprocess the data, uses the pretrained model to make predictions and returns a well formatted json output.
+  ```
+  data = self.decode_data(data)
+  inputs = self.preprocess(data)
+  preds = self.model.predict(inputs)
+  output = json.dump({"outputs":preds})
+  ```
 
 * `requirements.txt` is used to force pip to properly resolve dependencies:
   1. Add the extra libraries you'd need to run the model or preprocess your data.
