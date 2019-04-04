@@ -15,7 +15,6 @@ def predict():
     data = request.get_data()
     # Runs the model and returns the outputs in a json format
     output = model.model_predict(data)
-
     return output
 
 if __name__ == "__main__":
