@@ -1,7 +1,7 @@
 # Conteinerized Machine Learning
 A simple and ready to use template to create and deploy a machine learning model using Docker and Flask.
 
-### Setup:
+## Setup:
 
 In order to build your Docker API, you must make a few changes in the following files:
 #### `Dockerfile` 
