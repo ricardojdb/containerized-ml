@@ -5,7 +5,7 @@ FROM # TODO
 LABEL # TODO
 
 # Create app folder
-RUN /app
+RUN mkdir /app
 
 # Set the working directory to /app
 WORKDIR /app
