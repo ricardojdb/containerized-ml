@@ -6,7 +6,7 @@ import os
 
 class Model(object):
     def __init__(self, model_path):
-        """Class constructor"""
+        """Model Class"""
         self.model_path = model_path
         self.model = self.init_model()
 
@@ -22,30 +22,32 @@ class Model(object):
         """
         pass
     
-    def decode_data(self, data):
+    def decode_data(self, encoded_data):
         """
         Decodes the encoded data comming from a request.
 
         Parameters
         ----------
-        data : bytes
+        encoded_data : bytes
             Base64 data comming from request.
 
         Returns
         -------
         decoded_data: optional
-            Decoded data into a usable format.
+            Data decoded into a usable format.
         """
-        pass
+        # NOTE: This could vary depending on your data
+        decoded_data = base64.b64decode(encoded_data)
+        return np.frombuffer(decoded_data, dtype=np.float64)
 
-    def preprocess(self, raw_inputs):
+    def preprocess(self, raw_data):
         """
         Prerocess the data into the right format
         to be feed in to the given model.
 
         Parameters
         ----------
-        raw_inputs: optional
+        raw_data: optional
             Raw data to be processed.
 
         Returns
@@ -55,7 +57,7 @@ class Model(object):
         """
         pass
 
-    def model_predict(self, data):
+    def model_predict(self, encoded_data):
         """
         Decodes and preprocess the data, uses the 
         pretrained model to make predictions and 
@@ -63,7 +65,7 @@ class Model(object):
 
         Parameters
         ----------
-        data: bytes
+        encoded_data: bytes
             Base64 data comming from request.
 
         Returns
@@ -71,6 +73,6 @@ class Model(object):
         outputs: json
             A json response that contains the output
             from the pre-trained model.
-
         """
         pass
+        
