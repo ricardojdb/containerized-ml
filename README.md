@@ -53,11 +53,11 @@ docker build -t imagename .
 ```
 
 #### Run container:
-* Using the docker commands:
-  ```bash
-  docker run docker run --name=conainername --rm -dit -v <PATH>:/app -p 7001:7000 imagename
-  ```
-* Using `docker-compose`:
-  ```bash
-  docker-compose up -d
-  ```
+Using the `docker` commands:
+```bash
+docker run docker run --name=conainername --rm -dit -v <PATH>:/app -p 7001:7000 imagename
+```
+Using `docker-compose`:
+```bash
+docker-compose up -d
+```
