@@ -1,0 +1,22 @@
+version: '3'
+services:
+  model:
+    # Choose container name
+    container_name: model-service
+
+    # If the image is already created
+    image: modelimage:latest
+
+    # If the image is not created
+    build: "." # path to Dockerfile
+
+    # Open the desire ports
+    ports:
+     - "7000:7000"
+
+    # Path to the project folder
+    volumes:
+     - .:/app # <LocalPath>:<VolPath>
+
+    # If the image uses GPU
+    # runtime: nvidia
