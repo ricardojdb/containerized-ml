@@ -5,7 +5,7 @@ A simple and ready to use template to create and deploy a machine learning model
 
 In order to build your Docker API, you must make a few changes in the following files:
 #### `Dockerfile` 
-  This is a text document that contains all the commands a user could call on the command line to assemble an image: 
+This is a text document that contains all the commands a user could call on the command line to assemble an image: 
   1. Depending on the Machine Learning framework that you're using you'd have to choose an optimal image for it. I'd recommend you to use the official framework images on [Docker Hub](https://hub.docker.com/). Here is an example using pytorch:
   ```dockerfile
   FROM pytorch/pytorch 
@@ -16,7 +16,7 @@ In order to build your Docker API, you must make a few changes in the following 
   ```
 
 #### `utils.py` 
-  The utils file contains a template of the `Model` class that you'll use to manage requests, data preprocessing, model predictions, and responses, inside this class you'd have to implement the following methods:
+The utils file contains a template of the `Model` class that you'll use to manage requests, data preprocessing, model predictions, and responses, inside this class you'd have to implement the following methods:
   1. `init_model` Initializes the machine learning model. Here is an example using Keras:
   ```python
   model = load_model("model/path/model.h5")
@@ -39,5 +39,25 @@ In order to build your Docker API, you must make a few changes in the following 
   ```
 
 #### `requirements.txt` 
-  this file is used to force pip to properly resolve dependencies:
+this file is used to force pip to properly resolve dependencies:
   1. Add the extra libraries you'd need to run the model or preprocess your data.
+
+## Run:
+
+There are a few ways to run a docker container, I'll give a couple of examples using `docker-compose` and the `docker run` command. Here are the steps you'll need to follow:
+
+#### Build the image:
+With your `Docker` file ready you just have to run:
+```bash
+docker build -t imagename .
+```
+
+#### Run container:
+* Using the docker commands:
+  ```bash
+  docker run docker run --name=conainername --rm -dit -v <PATH>:/app -p 7001:7000 imagename
+  ```
+* Using `docker-compose`:
+  ```bash
+  docker-compose up -d
+  ```
