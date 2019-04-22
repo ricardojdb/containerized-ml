@@ -12,7 +12,7 @@ model = utils.Model("models/")
 @app.route('/predict/',methods=['GET','POST'])
 def predict():
     # Obtain the data from the request
-    data = request.get_data()
+    data = request.args.get('data')
     # Runs the model and returns the outputs in a json format
     output = model.model_predict(data)
     return output
