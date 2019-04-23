@@ -5,18 +5,18 @@ services:
     container_name: model-service
 
     # If the image is already created
-    image: modelimage:latest
+    # image: modelimage:latest
 
     # If the image is not created
     build: "." # path to Dockerfile
 
-    # Open the desire ports
+    # Route the desire ports <LOCAL>:<DOCKER>
     ports:
      - "7000:7000"
 
-    # Path to the project folder
+    # Path to the project folder <LOCAL>:<DOCKER>
     volumes:
-     - .:/app # <LocalPath>:<VolPath>
+     - .:/app 
 
     # If the image uses GPU
     # runtime: nvidia
