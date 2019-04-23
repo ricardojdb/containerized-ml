@@ -74,5 +74,13 @@ class Model(object):
             A json response that contains the output
             from the pre-trained model.
         """
-        pass
+        # Decode data
+        data = self.decode_data(encoded_data)
+        # Preprocess into the right format
+        inputs = self.preprocess(data)
+        # Compute predictions
+        preds = self.model.predict(inputs)
+        # Create json response
+        output = json.dumps({"outputs":preds})
         
+        return output
