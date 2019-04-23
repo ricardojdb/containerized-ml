@@ -61,3 +61,21 @@ Using `docker-compose`:
 ```bash
 docker-compose up -d
 ```
+
+## Usage:
+Here are a few examples on how to call the API using different methods. Note that you can change `localhost` for the private or public IP address of your computer.
+
+### Python:
+```python
+import requests
+import base64
+
+data = base64.b64encode(array)
+r = requests.get("http://localhost:7000/predict/", params={"data":data})
+out = r.json()
+```
+
+### URL:
+```
+http://localhost:7000/predict/?data=<data-in-base64>
+```
