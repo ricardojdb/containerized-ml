@@ -2,7 +2,7 @@
 FROM # TODO
 
 # Docker commands to run the container
-LABEL # TODO
+LABEL run="docker run --name=model-service --rm -dit -v <PATH>:/app -p 7001:7000 modelimage"
 
 # Create app folder
 RUN mkdir /app
