@@ -35,7 +35,7 @@ The utils file contains a template of the `Model` class that you'll use to manag
   # Compute predictions
   preds = self.model.predict(inputs)
   # Create json response
-  output = json.dump({"outputs":preds})
+  output = json.dumps({"outputs":preds})
   ```
 
 #### `requirements.txt` 
