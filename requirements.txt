@@ -1,4 +1,4 @@
-# Define the needed requirements
+# Define the required python packages
 pillow>=5.2.0
 requests>=2.19.1
 flask>=1.0.2
