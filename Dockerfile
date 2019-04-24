@@ -1,5 +1,5 @@
 # Select image to use as base for your specific model
-FROM # TODO
+FROM python:3.6
 
 # Docker commands to run the container
 LABEL run="docker run --name=model-service --rm -dit -v <PATH>:/app -p 7001:7000 modelimage"
