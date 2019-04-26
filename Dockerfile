@@ -2,7 +2,8 @@
 FROM python:3.6
 
 # Docker commands to run the container
-LABEL run="docker run --name=model-service --rm -dit -v <PATH>:/app -p 7001:7000 modelimage"
+LABEL run="docker run --name=model-service --rm -dit -v <PATH>:/app -p 7001:7000 modelimage" \
+      Name="containerized-ml" Version="0.0.1"
 
 # Create app folder
 RUN mkdir /app
