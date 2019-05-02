@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 # Loads the given model 
 model = utils.Model("models/")
+model.init_model()
 
 # The model runs in the /predict route
 @app.route('/predict/',methods=['GET','POST'])
