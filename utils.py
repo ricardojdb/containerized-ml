@@ -5,74 +5,59 @@ import json
 import os 
 
 class Model(object):
-    def __init__(self, model_path):
-        """Model Class"""
+    """Handles data preprocess and forward pass of the model"""
+    def __init__(self, model_path="models/"):
         self.model_path = model_path
-        self.model = self.init_model()
+        self.model = None
 
     def init_model(self):
-        """
-        Initializes the machine learning model.
+        """Initializes the machine learning model.
 
-        Returns
-        -------
-        model: object
-            Pre-trained model used
-            to make predictions.
+        Returns:
+            model (object): Loaded pre-trained model used
+                to make predictions.
+
         """
-        pass
+        raise NotImplementedError()
     
     def decode_data(self, encoded_data):
-        """
-        Decodes the encoded data comming from a request.
+        """Decodes the encoded data comming from a request.
 
-        Parameters
-        ----------
-        encoded_data : bytes
-            Base64 data comming from request.
+        Args:
+            encoded_data (base64): data comming from the HTTP request.
 
-        Returns
-        -------
-        decoded_data: optional
-            Data decoded into a usable format.
+        Returns:
+            array: Data decoded into a usable format.
+
         """
         # NOTE: This could vary depending on your data
         decoded_data = base64.b64decode(encoded_data)
         return np.frombuffer(decoded_data, dtype=np.float64)
 
     def preprocess(self, raw_data):
-        """
-        Prerocess the data into the right format
+        """Prerocess the data into the right format
         to be feed in to the given model.
+        
+        Args:
+            raw_data (array): Raw decoded data to be processed.
 
-        Parameters
-        ----------
-        raw_data: optional
-            Raw data to be processed.
+        Returns:
+            array: The data ready to use in the given model.
 
-        Returns
-        -------
-        inputs: optional
-            Data ready to use in the given model.
         """
-        pass
+        raise NotImplementedError()
 
     def model_predict(self, encoded_data):
-        """
-        Decodes and preprocess the data, uses the 
+        """Decodes and preprocess the data, uses the 
         pretrained model to make predictions and 
         returns a well formatted json output.
 
-        Parameters
-        ----------
-        encoded_data: bytes
-            Base64 data comming from request.
+        Args
+            encoded_data (base64): data comming from the HTTP request.
 
-        Returns
-        -------
-        outputs: json
-            A json response that contains the output
-            from the pre-trained model.
+        Returns:
+            json: A response that contains the output from 
+                the pre-trained model.
         """
         # Decode data
         data = self.decode_data(encoded_data)
