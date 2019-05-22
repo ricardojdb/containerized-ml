@@ -5,12 +5,12 @@ import utils
 # Initialize the flask app
 app = Flask(__name__)
 
-# Loads the given model 
+# Loads the given model
 model = utils.Model("models/")
 model.init_model()
 
-# The model runs in the /predict route
-@app.route('/predict/',methods=['GET','POST'])
+
+@app.route('/predict/', methods=['GET', 'POST'])
 def predict():
     # Obtain the data from the request
     data = request.args.get('data')
