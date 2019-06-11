@@ -2,7 +2,8 @@ from io import BytesIO
 import numpy as np
 import base64
 import json
-import os 
+import os
+
 
 class Model(object):
     """Handles data preprocess and forward pass of the model"""
@@ -19,7 +20,7 @@ class Model(object):
 
         """
         raise NotImplementedError()
-    
+
     def decode_data(self, encoded_data):
         """Decodes the encoded data comming from a request.
 
@@ -37,7 +38,7 @@ class Model(object):
     def preprocess(self, raw_data):
         """Prerocess the data into the right format
         to be feed in to the given model.
-        
+
         Args:
             raw_data (array): Raw decoded data to be processed.
 
@@ -48,15 +49,15 @@ class Model(object):
         raise NotImplementedError()
 
     def model_predict(self, encoded_data):
-        """Decodes and preprocess the data, uses the 
-        pretrained model to make predictions and 
+        """Decodes and preprocess the data, uses the
+        pretrained model to make predictions and
         returns a well formatted json output.
 
         Args
             encoded_data (base64): data comming from the HTTP request.
 
         Returns:
-            json: A response that contains the output from 
+            json: A response that contains the output from
                 the pre-trained model.
         """
         # Decode data
@@ -66,6 +67,6 @@ class Model(object):
         # Compute predictions
         preds = self.model.predict(inputs)
         # Create json response
-        output = json.dumps({"outputs":preds})
-        
+        output = json.dumps({"outputs": preds})
+
         return output

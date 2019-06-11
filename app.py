@@ -5,15 +5,16 @@ import utils
 # Initialize the flask app
 app = Flask(__name__)
 
-# Loads the given model 
+# Loads the given model
 model = utils.Model("models/")
 model.init_model()
 
+
 # The model runs in the /predict route
-@app.route('/predict/',methods=['GET','POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     # Obtain the data from the request
-    data = request.args.get('data')
+    data = request.get_data()
     # Runs the model and returns the outputs in a json format
     output = model.model_predict(data)
     return output
@@ -21,4 +22,4 @@ def predict():
 if __name__ == "__main__":
     # Running the Flask app on the url http://0.0.0.0:7000/
     # Use 0.0.0.0 to run in any IP available
-    app.run(host='0.0.0.0', port=7000, threaded=True)
+    app.run(host='0.0.0.0', port=7000)
